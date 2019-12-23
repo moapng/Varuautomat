@@ -7,7 +7,12 @@ namespace Varuautomat
     class Logic
     {
         public List<Item> ShoppingCart = new List<Item>();
-        Program prog = new Program();
+        Products products = new Products();
+        public void PrintShoppingCart()
+        {
+            foreach (Item item in ShoppingCart) { Console.WriteLine(item.name + item.price); }
+        }
+
         public int money;
         public Logic()
         {
@@ -93,29 +98,35 @@ namespace Varuautomat
             switch (keyInput.Key)
             {
                 case ConsoleKey.D1:
-                    prog.ShowBeverages();
+                    products.ShowBeverages();
+                    AddToCart(products.beverageList);
                     break;
                 case ConsoleKey.D2:
-                    prog.ShowFoods();
+                    products.ShowFoods();
+                    AddToCart(products.foodList);
                     break;
                 case ConsoleKey.D3:
-                    prog.ShowSnacks();
+                    products.ShowSnacks();
+                    AddToCart(products.snacksList);
                     break;
                 case ConsoleKey.Q:
                     ShowCategories();
                     break;
             }
         }
-        public void AddToCart()
+        public void AddToCart(List<Item> items)
         {
             var keyInput = Console.ReadKey();
             switch (keyInput.Key)
             {
-                case ConsoleKey.D1: //aidsss
+                case ConsoleKey.D1:
+                    ShoppingCart.Add(items[0]);
                     break;
                 case ConsoleKey.D2:
+                    ShoppingCart.Add(items[1]);
                     break;
                 case ConsoleKey.D3:
+                    ShoppingCart.Add(items[2]);
                     break;
                 case ConsoleKey.Q:
                     break;
