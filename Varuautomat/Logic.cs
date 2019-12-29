@@ -19,6 +19,7 @@ namespace Varuautomat
         }
         public void ShowStartMenu()
         {
+            Console.Clear();
             Console.WriteLine("1. Add Money \n" +
                 "2. Choose Product Category \n" +
                 "3. Pay \n" +
@@ -46,6 +47,7 @@ namespace Varuautomat
 
         public void ShowMoneyMenu()
         {
+            Console.Clear();
             Console.WriteLine("Choose desired amount: ");
             Console.WriteLine("1. 1 \n" +
                 "2. 2 \n" +
@@ -57,6 +59,7 @@ namespace Varuautomat
         }
         public void MoneyMenu()
         {
+            
             var keyInput = Console.ReadKey();
             do
             {
@@ -86,6 +89,7 @@ namespace Varuautomat
         }
         public void ShowCategories()
         {
+            Console.Clear();
             Console.WriteLine("Please choose a category: ");
             Console.WriteLine("1. Beverages \n" +
                 "2. Food \n" +
@@ -94,9 +98,11 @@ namespace Varuautomat
         }
         public void ChooseCategory()
         {
+            
             var keyInput = Console.ReadKey();
             switch (keyInput.Key)
             {
+
                 case ConsoleKey.D1:
                     products.ShowBeverages();
                     AddToCart(products.beverageList);
