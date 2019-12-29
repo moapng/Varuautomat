@@ -13,7 +13,21 @@ namespace Varuautomat
             foreach (Item item in ShoppingCart) { Console.WriteLine(item.name + item.price); }
         }
 
+        public void ShowMoney()
+        {
+            Console.SetCursorPosition(10, 10);
+            Console.WriteLine("Money: " + money);
+        }
         public int money;
+        public int change;
+        public int total;
+
+
+        public int GetTotal()
+        {
+            foreach (Item item in ShoppingCart) { total += item.price; }
+            return total;
+        }
         public Logic()
         {
         }
@@ -39,8 +53,10 @@ namespace Varuautomat
                     ChooseCategory();
                     break;
                 case ConsoleKey.D3:
+                    Console.WriteLine("Thank you for your purchase!");
                     break;
                 case ConsoleKey.Q:
+                    Environment.Exit(0);
                     break;
             }
         }
@@ -59,33 +75,28 @@ namespace Varuautomat
         }
         public void MoneyMenu()
         {
-            
             var keyInput = Console.ReadKey();
-            do
+            switch (keyInput.Key)
             {
-                switch (keyInput.Key)
-                {
-                    case ConsoleKey.D1:
-                        money += 1;
-                        break;
-                    case ConsoleKey.D2:
-                        money += 2;
-                        break;
-                    case ConsoleKey.D3:
-                        money += 5;
-                        break;
-                    case ConsoleKey.D4:
-                        money += 10;
-                        break;
-                    case ConsoleKey.D5:
-                        money += 20;
-                        break;
-                    case ConsoleKey.D6:
-                        money += 50;
-                        break;
-
-                }
-            } while (keyInput.Key != ConsoleKey.Q);
+                case ConsoleKey.D1:
+                    money += 1;
+                    break;
+                case ConsoleKey.D2:
+                    money += 2;
+                    break;
+                case ConsoleKey.D3:
+                    money += 5;
+                    break;
+                case ConsoleKey.D4:
+                    money += 10;
+                    break;
+                case ConsoleKey.D5:
+                    money += 20;
+                    break;
+                case ConsoleKey.D6:
+                    money += 50;
+                    break;
+            }
         }
         public void ShowCategories()
         {
@@ -98,11 +109,9 @@ namespace Varuautomat
         }
         public void ChooseCategory()
         {
-            
             var keyInput = Console.ReadKey();
             switch (keyInput.Key)
             {
-
                 case ConsoleKey.D1:
                     products.ShowBeverages();
                     AddToCart(products.beverageList);
@@ -126,15 +135,28 @@ namespace Varuautomat
             switch (keyInput.Key)
             {
                 case ConsoleKey.D1:
-                    ShoppingCart.Add(items[0]);
+                    if (money > GetTotal())
+                    {
+                        ShoppingCart.Add(items[0]);
+                        money -= GetTotal();
+                    }
                     break;
                 case ConsoleKey.D2:
-                    ShoppingCart.Add(items[1]);
+                    if (money > GetTotal())
+                    {
+                        ShoppingCart.Add(items[1]);
+                        money -= GetTotal();
+                    }
                     break;
                 case ConsoleKey.D3:
-                    ShoppingCart.Add(items[2]);
+                    if (money > GetTotal())
+                    {
+                        ShoppingCart.Add(items[2]);
+                        money -= GetTotal();
+                    }
                     break;
                 case ConsoleKey.Q:
+                    ChooseCategory();
                     break;
             }
         }
