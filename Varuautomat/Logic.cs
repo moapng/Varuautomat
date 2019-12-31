@@ -144,6 +144,7 @@ namespace Varuautomat
         }
         public void Payment()
         {
+            Console.Clear();
             Console.WriteLine("Thank you for your purchase! \n" +
                 "These are the items you bought: ");
             PrintShoppingCart();
