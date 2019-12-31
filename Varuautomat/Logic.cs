@@ -6,6 +6,13 @@ namespace Varuautomat
 {
     class Logic
     {
+        //                   TO DO
+
+        //fix money not showing
+        //fix so it loops correctly
+        //if not enough cash, show message "cant buy this" or something
+
+
         public List<Item> ShoppingCart = new List<Item>();
         Products products = new Products();
         public int money = 20;
