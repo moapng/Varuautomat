@@ -12,7 +12,7 @@ namespace Varuautomat
 
         public void PrintShoppingCart()
         {
-            foreach (Item item in ShoppingCart) { Console.WriteLine(item.name + item.price); }
+            foreach (Item item in ShoppingCart) { Console.WriteLine(item.name + " " + item.price + ":-"); }
         }
 
         public void ShowMoney()
@@ -23,11 +23,6 @@ namespace Varuautomat
         public int GetPrice(int price)
         {
             return price;
-        }
-
-
-        public Logic()
-        {
         }
 
         public void StartMenu()
@@ -47,16 +42,13 @@ namespace Varuautomat
                     ChooseCategory();
                     break;
                 case ConsoleKey.D3:
-                    Console.WriteLine("Thank you for your purchase!");
-                    PrintShoppingCart();
+                    Payment();
                     break;
                 case ConsoleKey.Q:
                     Environment.Exit(0);
                     break;
             }
         }
-
-
         public void MoneyMenu()
         {
             Console.Clear();
@@ -149,6 +141,14 @@ namespace Varuautomat
                     ChooseCategory();
                     break;
             }
+        }
+        public void Payment()
+        {
+            Console.WriteLine("Thank you for your purchase! \n" +
+                "These are the items you bought: ");
+            PrintShoppingCart();
+            Console.Beep();
+            Environment.Exit(0);
         }
     }
 }
