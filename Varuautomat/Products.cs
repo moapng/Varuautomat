@@ -4,28 +4,46 @@ using System.Text;
 
 namespace Varuautomat
 {
-     class Products
+    class Products
     {
-        public List<Item> beverageList = new List<Item> 
+        public List<Item> beverageList = new List<Item>
             {
-                new Item("1. Fanta", 12),
-                new Item("2. Sprite", 14),
-                new Item("3. Julmust", 16)
+                new Item("Fanta", 12),
+                new Item("Sprite", 14),
+                new Item("Julmust", 16)
             };
         public List<Item> foodList = new List<Item>
             {
-                new Item("1. Smörgås", 20),
-                new Item("2. Wrap", 25),
-                new Item("3. Nudlar", 6)
+                new Item("Smörgås", 20),
+                new Item("Wrap", 25),
+                new Item("Nudlar", 6)
             };
         public List<Item> snacksList = new List<Item>
             {
-                new Item("1. Äpple", 4),
-                new Item("2. Muffin", 13),
-                new Item("3. Knäckebröd", 9)
+                new Item("Äpple", 4),
+                new Item("Muffin", 13),
+                new Item("Knäckebröd", 9)
             };
-        public void ShowBeverages() { foreach (Item item in beverageList) { Console.WriteLine(item.name + " " + item.price + ":-"); } }
-        public void ShowFoods() { foreach (Item item in foodList) { Console.WriteLine(item.name + " " + item.price + ":-"); } }
-        public void ShowSnacks() { foreach (Item item in snacksList) { Console.WriteLine(item.name + " " + item.price + ":-"); } }
+        public void ShowBeverages()
+        {
+            int i = 1;
+            Console.Clear();
+            Console.WriteLine("Please Choose an Item: ");
+            foreach (Item item in beverageList) { Console.WriteLine(i + " " + item.name + " " + item.price + ":-"); i++; }
+        }
+        public void ShowFoods()
+        {
+            int i = 1;
+            Console.Clear();
+            Console.WriteLine("Please Choose an Item: ");
+            foreach (Item item in foodList) { Console.WriteLine(i + " " + item.name + " " + item.price + ":-"); i++; }
+        }
+        public void ShowSnacks()
+        {
+            int i = 1;
+            Console.Clear();
+            Console.WriteLine("Please Choose an Item: ");
+            foreach (Item item in snacksList) { Console.WriteLine(i + " " + item.name + " " + item.price + ":-"); i++; }
+        }
     }
 }
