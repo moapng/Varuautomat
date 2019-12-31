@@ -8,6 +8,8 @@ namespace Varuautomat
     {
         public List<Item> ShoppingCart = new List<Item>();
         Products products = new Products();
+        public int money = 20;
+
         public void PrintShoppingCart()
         {
             foreach (Item item in ShoppingCart) { Console.WriteLine(item.name + item.price); }
@@ -18,42 +20,35 @@ namespace Varuautomat
             Console.SetCursorPosition(10, 10);
             Console.WriteLine("Money: " + money);
         }
-        public int money;
-        public int change;
-        public int total;
-
-
-        public int GetTotal()
+        public int GetPrice(int price)
         {
-            foreach (Item item in ShoppingCart) { total += item.price; }
-            return total;
+            return price;
         }
+
+
         public Logic()
         {
         }
-        public void ShowStartMenu()
+
+        public void StartMenu()
         {
             Console.Clear();
             Console.WriteLine("1. Add Money \n" +
                 "2. Choose Product Category \n" +
                 "3. Pay \n" +
                 "Q. Quit");
-        }
-        public void StartMenu()
-        {
             var keyInput = Console.ReadKey();
             switch (keyInput.Key)
             {
                 case ConsoleKey.D1:
-                    ShowMoneyMenu();
                     MoneyMenu();
                     break;
                 case ConsoleKey.D2:
-                    ShowCategories();
                     ChooseCategory();
                     break;
                 case ConsoleKey.D3:
                     Console.WriteLine("Thank you for your purchase!");
+                    PrintShoppingCart();
                     break;
                 case ConsoleKey.Q:
                     Environment.Exit(0);
@@ -61,7 +56,8 @@ namespace Varuautomat
             }
         }
 
-        public void ShowMoneyMenu()
+
+        public void MoneyMenu()
         {
             Console.Clear();
             Console.WriteLine("Choose desired amount: ");
@@ -72,9 +68,6 @@ namespace Varuautomat
                 "5. 20 \n" +
                 "6. 50 \n" +
                 "Q. Quit");
-        }
-        public void MoneyMenu()
-        {
             var keyInput = Console.ReadKey();
             switch (keyInput.Key)
             {
@@ -98,7 +91,7 @@ namespace Varuautomat
                     break;
             }
         }
-        public void ShowCategories()
+        public void ChooseCategory()
         {
             Console.Clear();
             Console.WriteLine("Please choose a category: ");
@@ -106,9 +99,6 @@ namespace Varuautomat
                 "2. Food \n" +
                 "3. Snacks \n" +
                 "Q. Quit");
-        }
-        public void ChooseCategory()
-        {
             var keyInput = Console.ReadKey();
             switch (keyInput.Key)
             {
@@ -125,7 +115,7 @@ namespace Varuautomat
                     AddToCart(products.snacksList);
                     break;
                 case ConsoleKey.Q:
-                    ShowCategories();
+
                     break;
             }
         }
@@ -135,24 +125,24 @@ namespace Varuautomat
             switch (keyInput.Key)
             {
                 case ConsoleKey.D1:
-                    if (money > GetTotal())
+                    if (money > GetPrice(items[0].price))
                     {
                         ShoppingCart.Add(items[0]);
-                        money -= GetTotal();
+                        money -= GetPrice(items[0].price);
                     }
                     break;
                 case ConsoleKey.D2:
-                    if (money > GetTotal())
+                    if (money > GetPrice(items[1].price))
                     {
                         ShoppingCart.Add(items[1]);
-                        money -= GetTotal();
+                        money -= GetPrice(items[1].price);
                     }
                     break;
                 case ConsoleKey.D3:
-                    if (money > GetTotal())
+                    if (money > GetPrice(items[2].price))
                     {
                         ShoppingCart.Add(items[2]);
-                        money -= GetTotal();
+                        money -= GetPrice(items[2].price);
                     }
                     break;
                 case ConsoleKey.Q:

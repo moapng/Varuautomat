@@ -13,17 +13,13 @@ namespace Varuautomat
             Logic logic = new Logic();
 
 
-            //do
-            //{
-                
-                logic.ShowStartMenu();
+            while (true)
+            {
                 logic.StartMenu();
                 logic.ShowMoney();
+            }
 
-            //} while (true); //testing loop
         }
-
-
 
     }
 }
