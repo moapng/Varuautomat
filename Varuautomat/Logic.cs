@@ -27,10 +27,16 @@ namespace Varuautomat
         {
             return price;
         }
+        public void Clear()
+        {
+            var keyInput = Console.ReadKey();
+            if (keyInput.Key == ConsoleKey.Enter) { Console.Clear(); }
+        }
 
         public void StartMenu()
         {
-            Console.Clear();
+
+
             ShowMoney();
 
             Console.WriteLine("1. Add Money \n" +
@@ -130,7 +136,12 @@ namespace Varuautomat
                         ShoppingCart.Add(items[0]);
                         money -= GetPrice(items[0].price);
                     }
-                    else /*if (money <= GetPrice(items[0].price)) */{ Console.WriteLine("You don't have enough money"); }
+                    else /*if (money <= GetPrice(items[0].price)) */
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You don't have enough money, press Enter to continue shopping");
+                        Clear();
+                    }
                     break;
                 case ConsoleKey.D2:
                     if (money >= GetPrice(items[1].price))
@@ -138,7 +149,12 @@ namespace Varuautomat
                         ShoppingCart.Add(items[1]);
                         money -= GetPrice(items[1].price);
                     }
-                    else /*if (money <= GetPrice(items[1].price)) */{ Console.WriteLine("You don't have enough money"); }
+                    else /*if (money <= GetPrice(items[1].price)) */
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You don't have enough money, press Enter to continue shopping");
+                        Clear();
+                    }
                     break;
                 case ConsoleKey.D3:
                     if (money >= GetPrice(items[2].price))
@@ -146,7 +162,12 @@ namespace Varuautomat
                         ShoppingCart.Add(items[2]);
                         money -= GetPrice(items[2].price);
                     }
-                    else /*if (money <= GetPrice(items[2].price)) */{ Console.WriteLine("You don't have enough money"); }
+                    else /*if (money <= GetPrice(items[2].price)) */
+                    {
+                        Console.Clear();
+                        Console.WriteLine("You don't have enough money, press Enter to continue shopping");
+                        Clear();
+                    }
                     break;
                 case ConsoleKey.Q:
                     ChooseCategory();
