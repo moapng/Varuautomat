@@ -6,8 +6,8 @@ namespace Varuautomat
 {
     class Logic
     {
-       // does not show error message when not enough money correctly...
-    
+        // does not show error message when not enough money correctly...
+
         public List<Item> ShoppingCart = new List<Item>();
         Products products = new Products();
         public int money = 20;
@@ -125,28 +125,28 @@ namespace Varuautomat
             switch (keyInput.Key)
             {
                 case ConsoleKey.D1:
-                    if (money > GetPrice(items[0].price))
+                    if (money >= GetPrice(items[0].price))
                     {
                         ShoppingCart.Add(items[0]);
                         money -= GetPrice(items[0].price);
                     }
-                    else { Console.WriteLine("You don't have enough money"); }
+                    else /*if (money <= GetPrice(items[0].price)) */{ Console.WriteLine("You don't have enough money"); }
                     break;
                 case ConsoleKey.D2:
-                    if (money > GetPrice(items[1].price))
+                    if (money >= GetPrice(items[1].price))
                     {
                         ShoppingCart.Add(items[1]);
                         money -= GetPrice(items[1].price);
                     }
-                    else { Console.WriteLine("You don't have enough money"); }
+                    else /*if (money <= GetPrice(items[1].price)) */{ Console.WriteLine("You don't have enough money"); }
                     break;
                 case ConsoleKey.D3:
-                    if (money > GetPrice(items[2].price))
+                    if (money >= GetPrice(items[2].price))
                     {
                         ShoppingCart.Add(items[2]);
                         money -= GetPrice(items[2].price);
                     }
-                    else { Console.WriteLine("You don't have enough money"); }
+                    else /*if (money <= GetPrice(items[2].price)) */{ Console.WriteLine("You don't have enough money"); }
                     break;
                 case ConsoleKey.Q:
                     ChooseCategory();
