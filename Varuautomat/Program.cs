@@ -16,7 +16,6 @@ namespace Varuautomat
             while (true)
             {
                 logic.StartMenu();
-                logic.ShowMoney();
             }
 
         }

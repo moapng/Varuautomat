@@ -6,13 +6,8 @@ namespace Varuautomat
 {
     class Logic
     {
-        //                   TO DO
-
-        //fix money not showing
-        //fix so it loops correctly
-        //if not enough cash, show message "cant buy this" or something
-
-
+       // does not show error message when not enough money correctly...
+    
         public List<Item> ShoppingCart = new List<Item>();
         Products products = new Products();
         public int money = 20;
@@ -26,6 +21,7 @@ namespace Varuautomat
         {
             Console.SetCursorPosition(10, 10);
             Console.WriteLine("Money: " + money);
+            Console.SetCursorPosition(0, 0);
         }
         public int GetPrice(int price)
         {
@@ -35,6 +31,8 @@ namespace Varuautomat
         public void StartMenu()
         {
             Console.Clear();
+            ShowMoney();
+
             Console.WriteLine("1. Add Money \n" +
                 "2. Choose Product Category \n" +
                 "3. Pay \n" +
@@ -59,6 +57,7 @@ namespace Varuautomat
         public void MoneyMenu()
         {
             Console.Clear();
+            ShowMoney();
             Console.WriteLine("Choose desired amount: ");
             Console.WriteLine("1. 1 \n" +
                 "2. 2 \n" +
@@ -93,6 +92,7 @@ namespace Varuautomat
         public void ChooseCategory()
         {
             Console.Clear();
+            ShowMoney();
             Console.WriteLine("Please choose a category: ");
             Console.WriteLine("1. Beverages \n" +
                 "2. Food \n" +
@@ -120,6 +120,7 @@ namespace Varuautomat
         }
         public void AddToCart(List<Item> items)
         {
+            ShowMoney();
             var keyInput = Console.ReadKey();
             switch (keyInput.Key)
             {
@@ -129,6 +130,7 @@ namespace Varuautomat
                         ShoppingCart.Add(items[0]);
                         money -= GetPrice(items[0].price);
                     }
+                    else { Console.WriteLine("You don't have enough money"); }
                     break;
                 case ConsoleKey.D2:
                     if (money > GetPrice(items[1].price))
@@ -136,6 +138,7 @@ namespace Varuautomat
                         ShoppingCart.Add(items[1]);
                         money -= GetPrice(items[1].price);
                     }
+                    else { Console.WriteLine("You don't have enough money"); }
                     break;
                 case ConsoleKey.D3:
                     if (money > GetPrice(items[2].price))
@@ -143,6 +146,7 @@ namespace Varuautomat
                         ShoppingCart.Add(items[2]);
                         money -= GetPrice(items[2].price);
                     }
+                    else { Console.WriteLine("You don't have enough money"); }
                     break;
                 case ConsoleKey.Q:
                     ChooseCategory();
@@ -152,6 +156,7 @@ namespace Varuautomat
         public void Payment()
         {
             Console.Clear();
+            ShowMoney();
             Console.WriteLine("Thank you for your purchase! \n" +
                 "These are the items you bought: ");
             PrintShoppingCart();
