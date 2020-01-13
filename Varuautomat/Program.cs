@@ -10,6 +10,7 @@ namespace Varuautomat
 
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
             Logic logic = new Logic();
 
 

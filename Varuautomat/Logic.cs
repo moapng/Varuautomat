@@ -29,14 +29,15 @@ namespace Varuautomat
         }
         public void Clear()
         {
+            Console.Clear();
+            Console.WriteLine("You don't have enough money, press Enter to continue shopping");
             var keyInput = Console.ReadKey();
             if (keyInput.Key == ConsoleKey.Enter) { Console.Clear(); }
         }
 
         public void StartMenu()
         {
-
-
+            Console.Clear();
             ShowMoney();
 
             Console.WriteLine("1. Add Money \n" +
@@ -94,6 +95,7 @@ namespace Varuautomat
                     money += 50;
                     break;
             }
+           
         }
         public void ChooseCategory()
         {
@@ -108,21 +110,25 @@ namespace Varuautomat
             switch (keyInput.Key)
             {
                 case ConsoleKey.D1:
+                    Console.Clear();
                     products.ShowBeverages();
                     AddToCart(products.beverageList);
                     break;
                 case ConsoleKey.D2:
+                    Console.Clear();
                     products.ShowFoods();
                     AddToCart(products.foodList);
                     break;
                 case ConsoleKey.D3:
+                    Console.Clear();
                     products.ShowSnacks();
                     AddToCart(products.snacksList);
                     break;
                 case ConsoleKey.Q:
-
+                    StartMenu();
                     break;
             }
+            
         }
         public void AddToCart(List<Item> items)
         {
@@ -138,8 +144,6 @@ namespace Varuautomat
                     }
                     else /*if (money <= GetPrice(items[0].price)) */
                     {
-                        Console.Clear();
-                        Console.WriteLine("You don't have enough money, press Enter to continue shopping");
                         Clear();
                     }
                     break;
@@ -151,8 +155,6 @@ namespace Varuautomat
                     }
                     else /*if (money <= GetPrice(items[1].price)) */
                     {
-                        Console.Clear();
-                        Console.WriteLine("You don't have enough money, press Enter to continue shopping");
                         Clear();
                     }
                     break;
@@ -164,8 +166,6 @@ namespace Varuautomat
                     }
                     else /*if (money <= GetPrice(items[2].price)) */
                     {
-                        Console.Clear();
-                        Console.WriteLine("You don't have enough money, press Enter to continue shopping");
                         Clear();
                     }
                     break;
